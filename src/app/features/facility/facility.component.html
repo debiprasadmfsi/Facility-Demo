@@ -1,0 +1,16 @@
+<div class="container-fluid location-container mt-5 mat-elevation-z8 p-0" >
+    <mat-toolbar>
+
+        <span>Facilites</span>
+        <span class="example-spacer">
+
+        </span>
+        <div>
+            <app-search (search)="searchFacility($event)"></app-search>
+        </div>
+    </mat-toolbar>
+    <app-table [listData]="dataSource" [displayedColumns]='displayedColumns' [columnNames]="columnNames" (show)="displayFacilityDetails($event)"></app-table>
+    <mat-paginator [length]="Facilitys.length" [pageSizeOptions]="pageSizeOption" aria-label="Select page" (page)="setPagination($event)">
+    </mat-paginator>
+
+</div>
