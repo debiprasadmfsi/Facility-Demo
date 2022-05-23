@@ -9,7 +9,8 @@
             <app-search (search)="searchFacility($event)"></app-search>
         </div>
     </mat-toolbar>
-    <app-table [listData]="dataSource" [displayedColumns]='displayedColumns' [columnNames]="columnNames" (show)="displayFacilityDetails($event)"></app-table>
+    <app-table [listData]="dataSource" (show)="displayFacilityDetails($event)" (sort)="sortFacility($event)">
+    </app-table>
     <mat-paginator [length]="Facilitys.length" [pageSizeOptions]="pageSizeOption" aria-label="Select page" (page)="setPagination($event)">
     </mat-paginator>
 

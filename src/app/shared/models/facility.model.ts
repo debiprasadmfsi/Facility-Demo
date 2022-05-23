@@ -1,6 +1,6 @@
 export interface FacilityResults {
     facility_name: string;
-    type_of_facility: string;
+    type_of_facility: number;
     city: string;
     state: string;
     total_number_of_beds: number;

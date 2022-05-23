@@ -1,0 +1,17 @@
+table{
+    width: 100%;
+    .mat-row{
+        .link{
+            cursor: pointer;
+            color: rgb(0, 0, 255);
+            &:hover{
+                text-decoration: underline;
+            }
+          }
+        .form-select{
+            width: 50%;
+        }
+        
+       
+    }
+}

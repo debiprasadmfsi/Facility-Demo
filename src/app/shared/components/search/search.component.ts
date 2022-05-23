@@ -1,5 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import {debounceTime, distinctUntilChanged } from 'rxjs';
+import { SubSink } from 'subsink';
 
 
 
@@ -8,25 +10,27 @@ import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
-  filterTextChanged: Subject<string> = new Subject<string>();
+export class SearchComponent implements OnInit ,OnDestroy{
   @Output() search: EventEmitter<string> = new EventEmitter();
-  constructor() { }
+  private subs = new SubSink();
+  searchInput: FormControl = new FormControl()
+  constructor() {
+
+  }
+
 
   ngOnInit(): void {
+    this.subs.sink =this.searchInput.valueChanges
+    .pipe(debounceTime(1000), distinctUntilChanged())
+    .subscribe((searchKey:string)=>{
+      this.search.emit(searchKey);
+    })
+
   }
 
-  loadData(event: Event): void {
-
-    let filterText = (event.target as HTMLInputElement).value;
-    if (this.filterTextChanged.observers.length === 0) {
-      this.filterTextChanged
-        .pipe(debounceTime(1000), distinctUntilChanged())
-        .subscribe(filterQuery => {
-          this.search.emit(filterQuery.toLocaleLowerCase());
-        });
-    }
-    this.filterTextChanged.next(filterText);
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
+
 
 }

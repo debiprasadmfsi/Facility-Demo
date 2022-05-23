@@ -1,0 +1,49 @@
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+  <ng-container matColumnDef="facility_name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Facility Name </th>
+    <td mat-cell *matCellDef="let element" class="link" (click)="showDetails(element)" >
+      {{element.facility_name}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="type_of_facility">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type of Facility </th>
+    <td mat-cell *matCellDef="let element">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="element.type_of_facility">
+        <ng-container *ngFor="let facility of facilityTypes;let i=index">
+          <option [value]="i+1" [selected]="element.type_of_facility === i+1">{{facility}}</option>
+        </ng-container>
+      </select>
+
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="city" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.city}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="state">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.state}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="total_number_of_beds">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Number Of Beds </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.total_number_of_beds}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="zip_code">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Zip Code </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.zip_code}}
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

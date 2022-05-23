@@ -35,4 +35,19 @@ export class UtilityService {
 
     }
 
+    sort(type: string, key: string, list: FacilityResults[]) {
+        list.sort((a, b) => {
+            let x= a[key as keyof FacilityResults];
+            let y =b[key as keyof FacilityResults];
+            if (x < y) {
+                return type === 'asc' ? -1 : 1;
+            } else if (x > y) {
+                return type === 'asc' ? 1 : -1;
+            }
+            return 0;
+        });
+        return list;
+    }
+
+
 }
