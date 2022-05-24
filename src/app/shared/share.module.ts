@@ -8,6 +8,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import { MatSortModule } from "@angular/material/sort";
+import { MatButtonModule } from "@angular/material/button";
+import {MatInputModule} from '@angular/material/input';
+import {MatSliderModule} from '@angular/material/slider';
+import { DistanceSliderPipe } from './pipes/distance-slider.pipe';
 @NgModule({
     imports:[
         CommonModule,
@@ -18,10 +22,14 @@ import { MatSortModule } from "@angular/material/sort";
         ReactiveFormsModule,
         MatSelectModule,
         FormsModule,
-        MatSortModule
+        MatSortModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSliderModule
     ],
     declarations:[
-        SearchComponent
+        SearchComponent,
+        DistanceSliderPipe
     ],
     exports:[
         MatTableModule,
@@ -30,7 +38,10 @@ import { MatSortModule } from "@angular/material/sort";
         MatPaginatorModule,
         MatDialogModule,
         MatSelectModule,
-        MatSortModule
+        MatSortModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSliderModule
     ],
     schemas:[NO_ERRORS_SCHEMA]
 })

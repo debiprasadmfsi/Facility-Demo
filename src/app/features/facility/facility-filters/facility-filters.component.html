@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Apply Filters</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="filterForm">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Zip Code</mat-label>
+            <input type="number" matInput placeholder="Ex. 759019" formControlName="zip_code">
+        </mat-form-field>
+
+        <mat-slider thumbLabel color="primary" [displayWith]="formatLabel" formControlName="range" tickInterval="1000" step="1000" min="0" max="100000"
+            aria-label="units"></mat-slider>
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="getFilterData()" [mat-dialog-close]="true" [disabled]="!filterForm.valid" cdkFocusInitial>Apply</button>
+</mat-dialog-actions>

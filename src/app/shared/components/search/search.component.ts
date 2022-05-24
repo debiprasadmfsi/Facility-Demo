@@ -14,11 +14,7 @@ export class SearchComponent implements OnInit ,OnDestroy{
   @Output() search: EventEmitter<string> = new EventEmitter();
   private subs = new SubSink();
   searchInput: FormControl = new FormControl()
-  constructor() {
-
-  }
-
-
+  
   ngOnInit(): void {
     this.subs.sink =this.searchInput.valueChanges
     .pipe(debounceTime(1000), distinctUntilChanged())
