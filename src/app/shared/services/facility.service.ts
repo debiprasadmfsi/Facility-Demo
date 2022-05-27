@@ -28,7 +28,7 @@ export class FacilityService {
     search(list: FacilityResults[], search: string): FacilityResults[] {
         let serchData = list.filter((facility: FacilityResults) => {
             let facility_name: string = facility.facility_name.toLowerCase();
-            return facility_name.includes(search);
+            return facility_name.includes(search.toLowerCase());
         });
         return serchData;
 

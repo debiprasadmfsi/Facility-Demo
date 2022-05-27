@@ -11,7 +11,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatButtonModule } from "@angular/material/button";
 import {MatInputModule} from '@angular/material/input';
 import {MatSliderModule} from '@angular/material/slider';
-import { DistanceSliderPipe } from './pipes/distance-slider.pipe';
+
 @NgModule({
     imports:[
         CommonModule,
@@ -28,8 +28,7 @@ import { DistanceSliderPipe } from './pipes/distance-slider.pipe';
         MatSliderModule
     ],
     declarations:[
-        SearchComponent,
-        DistanceSliderPipe
+        SearchComponent
     ],
     exports:[
         MatTableModule,

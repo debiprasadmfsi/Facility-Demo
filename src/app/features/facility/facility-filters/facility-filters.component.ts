@@ -9,7 +9,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class FacilityFiltersComponent implements OnInit {
   filterForm!: FormGroup;
-  constructor(private dialogRef: MatDialogRef<FacilityFiltersComponent>) { }
+  constructor(public dialogRef: MatDialogRef<FacilityFiltersComponent>) { }
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({
